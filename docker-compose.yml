@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    container_name: ism-partenaire-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./code:/app/code:ro
+    environment:
+      PYTHONUNBUFFERED: "1"

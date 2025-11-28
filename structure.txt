@@ -1,6 +1,10 @@
 Structure du projet :
 
 Infom114-Genie-Logiciel_DB_partenaire/
+    .github/
+        workflows/
+            ci.yml
+            docs.yml
     .gitignore
     CONTRIBUTING.md
     LICENSE
@@ -10,11 +14,13 @@ Infom114-Genie-Logiciel_DB_partenaire/
     doc/
         ProgrammerGuide/
             PDF/
+                ProgrammerGuide.pdf
                 exemple.txt
             SourceCode/
                 exemple.txt
         UserGuide/
             PDF/
+                UserGuide.pdf
                 exemple.txt
             SourceCode/
                 exemple.txt
@@ -24,15 +30,21 @@ Infom114-Genie-Logiciel_DB_partenaire/
         analysis/
             Charter/
                 2025-00-00 – Title - Purpose.txt
+                2025-11-28 – Cahier_des_charges_Agile___ISM.pdf
             Meeting/
                 2025-00-00 – Title - Purpose.txt
+                2025-11-27 – Call Introductif_ Di Bono - Plateformes Partenaires.pdf
             Step Charter/
                 2025-00-00 – Title - Purpose.txt
+                2025-11-27 – Call-Introductif-Di-Bono-Plateformes-Partenaires-NoteSynthesis.pdf
         design/
             2025-00-00 – Title - Purpose.txt
+            2025-11-28 – MYJ - InterfacePrototype.1.png
         implementation/
             2025-00-00 – Title - Purpose.txt
             2025-11-09 – StructureCode.py
+            2025-11-28 – MYJ - InterfacePrototype/
+                index.html
     planning/
         AgendaADE.url
         gantt - Arthur SMOOS.xlsx
@@ -40,4 +52,6 @@ Infom114-Genie-Logiciel_DB_partenaire/
         gantt - Esteban BARRACHO.xlsx
         gantt - Herbert BAMPOLINEZA.xlsx
         gantt - Sasha VAN ROSSUM.xlsx
+    pyproject.toml
+    sonar-project.properties
     structure.txt
