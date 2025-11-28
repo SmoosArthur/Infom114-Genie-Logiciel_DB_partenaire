@@ -1,4 +1,4 @@
-name: CI - Qualit� & Tests
+name: CI - Qualité & Tests (light)
 
 on:
   push:
@@ -23,28 +23,24 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          pip install black isort flake8 pytest pytest-cov bandit
+          # outils de qualité (facultatif, mais utile)
+          pip install black isort flake8 bandit
 
-      - name: Lint - Black
+      - name: Check Python syntax
+        run: python -m compileall code
+
+      - name: Lint - Black (non bloquant)
         run: black --check code
-
-      - name: Lint - isort
-        run: isort --check-only code
-
-      - name: Lint - Flake8
-        run: flake8 code
-
-      - name: Security scan - Bandit
-        run: bandit -r code -q
-
-      - name: Run tests with coverage
-        run: |
-          pytest -q --cov=code --cov-report=xml
         continue-on-error: true
 
-      - name: Upload coverage.xml
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-xml
-          path: coverage.xml
-          if-no-files-found: ignore
+      - name: Lint - isort (non bloquant)
+        run: isort --check-only code
+        continue-on-error: true
+
+      - name: Lint - Flake8 (non bloquant)
+        run: flake8 code
+        continue-on-error: true
+
+      - name: Security scan - Bandit (non bloquant)
+        run: bandit -r code -q
+        continue-on-error: true

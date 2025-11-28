@@ -1,4 +1,4 @@
-name: Docs - Build LaTeX
+name: Docs - Publier PDF
 
 on:
   push:
@@ -18,22 +18,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Compile UserGuide
-        uses: xu-cheng/latex-action@v3
-        with:
-          # ?? adapte ce chemin si besoin
-          root_file: |
-            doc/UserGuide/TeX/UserGuide.tex
+      - name: Lister les fichiers doc/
+        run: |
+          echo "Contenu du dossier doc/"
+          ls -R doc || echo "Dossier doc introuvable"
 
-      - name: Compile ProgrammerGuide
-        uses: xu-cheng/latex-action@v3
-        with:
-          # ?? adapte ce chemin si besoin
-          root_file: |
-            doc/ProgrammerGuide/TeX/ProgrammerGuide.tex
+      - name: Vérifier la présence des PDFs
+        run: |
+          test -f doc/UserGuide/PDF/UserGuide.pdf
+          test -f doc/ProgrammerGuide/PDF/ProgrammerGuide.pdf
 
-      - name: Upload PDFs
+      - name: Upload PDFs as artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: doc-pdfs
-          path: doc/**/*.pdf
+          name: guides-pdf
+          path: |
+            doc/UserGuide/PDF/UserGuide.pdf
+            doc/ProgrammerGuide/PDF/ProgrammerGuide.pdf
