@@ -1,0 +1,43 @@
+Structure du projet :
+
+Infom114-Genie-Logiciel_DB_partenaire/
+    .gitignore
+    CONTRIBUTING.md
+    LICENSE
+    README.md
+    code/
+        exemple.txt
+    doc/
+        ProgrammerGuide/
+            PDF/
+                exemple.txt
+            SourceCode/
+                exemple.txt
+        UserGuide/
+            PDF/
+                exemple.txt
+            SourceCode/
+                exemple.txt
+    legal/
+        exemple.txt
+    method/
+        analysis/
+            Charter/
+                2025-00-00 – Title - Purpose.txt
+            Meeting/
+                2025-00-00 – Title - Purpose.txt
+            Step Charter/
+                2025-00-00 – Title - Purpose.txt
+        design/
+            2025-00-00 – Title - Purpose.txt
+        implementation/
+            2025-00-00 – Title - Purpose.txt
+            2025-11-09 – StructureCode.py
+    planning/
+        AgendaADE.url
+        gantt - Arthur SMOOS.xlsx
+        gantt - Benjamin BELLOT.xlsx
+        gantt - Esteban BARRACHO.xlsx
+        gantt - Herbert BAMPOLINEZA.xlsx
+        gantt - Sasha VAN ROSSUM.xlsx
+    structure.txt
