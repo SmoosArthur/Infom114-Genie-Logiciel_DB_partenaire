@@ -1,5 +1,4 @@
-Set-Content -Path ".github/workflows/ci.yml" -Value @'
-name: CI - QualitÃ© & Tests
+name: CI - Qualité & Tests
 
 on:
   push:
@@ -49,4 +48,3 @@ jobs:
           name: coverage-xml
           path: coverage.xml
           if-no-files-found: ignore
-'@
