@@ -1,0 +1,52 @@
+Set-Content -Path ".github/workflows/ci.yml" -Value @'
+name: CI - Qualité & Tests
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  quality-and-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install black isort flake8 pytest pytest-cov bandit
+
+      - name: Lint - Black
+        run: black --check code
+
+      - name: Lint - isort
+        run: isort --check-only code
+
+      - name: Lint - Flake8
+        run: flake8 code
+
+      - name: Security scan - Bandit
+        run: bandit -r code -q
+
+      - name: Run tests with coverage
+        run: |
+          pytest -q --cov=code --cov-report=xml
+        continue-on-error: true
+
+      - name: Upload coverage.xml
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-xml
+          path: coverage.xml
+          if-no-files-found: ignore
+'@

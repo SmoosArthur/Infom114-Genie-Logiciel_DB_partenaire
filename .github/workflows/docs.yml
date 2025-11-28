@@ -1,0 +1,37 @@
+Set-Content -Path ".github/workflows/docs.yml" -Value @'
+name: Docs - Build LaTeX
+
+on:
+  push:
+    paths:
+      - "doc/**"
+  pull_request:
+    paths:
+      - "doc/**"
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile UserGuide
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            doc/UserGuide/TeX/UserGuide.tex
+
+      - name: Compile ProgrammerGuide
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            doc/ProgrammerGuide/TeX/ProgrammerGuide.tex
+
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: doc-pdfs
+          path: doc/**/*.pdf
+'@
